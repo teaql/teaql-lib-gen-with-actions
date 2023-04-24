@@ -1,0 +1,61 @@
+<root name="bank" org="testbank">
+
+    
+<type_definition name="createTime" min="2000-01-01T00:00:00" parent="dateTime"/>
+
+    <platform
+            name="好平台"
+            founded="createTime()"
+            contact_number="121212-1212"
+    />
+
+    <merchant
+            name="好商家"
+            owner="user(relationType=oneToOne reverseName=company)"
+            status="merchant_status()"
+            platform="platform()"
+    />
+
+    <good_merchant
+            _parent="merchant"
+            good_name="text()"
+            quantity="45.00"
+    />
+
+    <merchant_status
+            _constant="true"
+            _identifier="code"
+            code="open,closed,hee"
+            name="1|2|3|string()"
+            platform="platform()"
+    />
+
+    <user
+            name="张三"
+            platform="platform()"
+    />
+
+    <cylinder
+            _parent="asset"
+            size="规格:11234|[1,100]"
+    />
+
+    <asset
+            name="一个好东西"
+            barcode="1231aa"
+            merchant="merchant()"
+    />
+
+    <good_cylinder
+            _parent="cylinder"
+            level="level1|level2?"
+    />
+
+    <dewar
+            _parent="asset"
+            weight="33.22"
+            thinness="厚度:number(sqlType=NUMERIC(10,2))?"
+    />
+
+</root>
+
