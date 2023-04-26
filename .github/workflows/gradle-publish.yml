@@ -14,7 +14,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up JDK 11
+    - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
         java-version: '17'
@@ -23,9 +23,10 @@ jobs:
         settings-path: ${{ github.workspace }} # location for the settings.xml file
     - name: Generate Code
       run: |
+        zip -r models.zip models
         mkdir -p ./.tmp
         cd ./.tmp
-        curl --location --request POST 'https://springboot-teaql-gen-code-xxlfpicwgi.cn-chengdu.fcapp.run/generate' --form 'name="test"' --form 'file=@"../model.xml"' --output domain.zip
+        curl --location --request POST 'https://springboot-teaql-gen-code-xxlfpicwgi.cn-chengdu.fcapp.run/generate' --form 'scope="lib"' --form 'file=@"../models.zip"' --output domain.zip
         unzip domain.zip
     - name: Build Package with Gradle
       uses: gradle/gradle-build-action@v2.4.2
