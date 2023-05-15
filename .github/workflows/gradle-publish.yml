@@ -28,21 +28,12 @@ jobs:
         cd ./.tmp
         curl --location --request POST 'https://springboot-teaql-gen-code-xxlfpicwgi.cn-chengdu.fcapp.run/generate' --form 'scope="lib"' --form 'file=@"../models.zip"' --output domain.zip
         unzip domain.zip
-    - name: Build Package with Gradle
-      uses: gradle/gradle-build-action@v2.4.2
-      with:
-        arguments: build
-        gradle-version: current
-        build-root-directory: ./.tmp
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        REPOSITORY: ${{ github.repository }}
-        ORG: ${{ secrets.GITHUB_ACTOR }}
     - name: Publish Package to GitHub Packages
       uses: gradle/gradle-build-action@v2.4.2
       with:
         arguments: publish
         gradle-version: current
+        cache-disabled: true
         build-root-directory: ./.tmp
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
