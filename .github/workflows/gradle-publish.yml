@@ -26,7 +26,7 @@ jobs:
         zip -r models.zip models
         mkdir -p ./.tmp
         cd ./.tmp
-        curl --location --request POST 'https://springboot-teaql-gen-code-xxlfpicwgi.cn-chengdu.fcapp.run/generate' --form 'scope="lib"' --form 'file=@"../models.zip"' --output domain.zip
+        curl --location --request POST 'http://springboot.teaql-gen-code.1496855407387739.us-west-1.fc.devsapp.net/generate' --form 'scope="lib"' --form 'file=@"../models.zip"' --output domain.zip
         unzip domain.zip
     - name: Publish Package to GitHub Packages
       uses: gradle/gradle-build-action@v2.4.2
