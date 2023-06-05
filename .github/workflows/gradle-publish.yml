@@ -24,7 +24,7 @@ jobs:
     - name: Generate Code
       run: |
         zip -r models.zip models
-        licenseFile=$(find $DIR -name "*.LICENSE" -print -quit)
+        licenseFile=$(find . -name "*.LICENSE" -print -quit)
         mkdir -p ./.tmp
         cd ./.tmp
         curl --location --request POST 'http://springboot.teaql-gen-code.1496855407387739.us-west-1.fc.devsapp.net/generate' --form 'scope="lib"' --form 'file=@"../models.zip"' --form licenseFile=@"$licenseFile" --output domain.zip
