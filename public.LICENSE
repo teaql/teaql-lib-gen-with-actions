@@ -1,5 +1,5 @@
 {
-    "maxFieldCount": 200,
+    "maxFieldCount": 2000,
     "maxEntityCount": 20,
     "name": "公开账号",
     "Issued By": "jackytian",
