@@ -27,7 +27,7 @@ jobs:
         licenseFile=$(find . -name "*.LICENSE" -print -quit)
         mkdir -p ./.tmp
         cd ./.tmp
-        curl --location --request POST 'http://springboot.teaql-gen-code.1496855407387739.us-west-1.fc.devsapp.net/generate' --form 'scope="lib"' --form 'file=@"../models.zip"' --form licenseFile=@"$licenseFile" --output domain.zip
+        curl --location --request POST 'http://springboot.teaql-gen-code.1496855407387739.us-west-1.fc.devsapp.net/generate' --form 'scope="lib"' --form 'file=@"../models.zip"' --form licenseFile=@../$licenseFile --output domain.zip
         unzip domain.zip
         if [ -e "error.txt" ]; then
           cat error.txt
